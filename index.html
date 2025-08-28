@@ -660,7 +660,16 @@ document.addEventListener('keydown', (e) => {
   wire(getFormByName('availability'));        // section form
   wire(getFormByName('availability-modal'));  // popup form
 })();
+    // Disable any automatic modal opening on page load (desktop + mobile)
+(function(){
+  // Pretend modal already opened in this session (blocks session-based auto-open)
+  try { sessionStorage.setItem('modalSeen','1'); } catch(e){}
 
+  // Block any existing auto-open handlers bound to page load
+  const block = e => { e.stopImmediatePropagation(); };
+  window.addEventListener('DOMContentLoaded', block, { capture: true });
+  window.addEventListener('load', block, { capture: true });
+})();
 
   </script>
 </body>
