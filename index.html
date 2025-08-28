@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Chauffeur-Driven Rides from Your Gated Community to Your Office</title>
+  <meta name="description" content="Chauffeur-driven - members-only office routes for verified residents of gated communities in Hyderabad. Premium cars, professional drivers, predictable schedules." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    /* --------- Luxury Dark Tokens --------- */
+    :root{
+      --bg:#0B0B0F;          /* page */
+      --surface:#111216;     /* elevated strip */
+      --panel:#15171C;       /* cards/panels */
+      --panel-2:#1A1D23;     /* alt panel */
+      --hair:#242832;        /* borders */
+      --mutebg:#0F1014;      /* subtle sections */
+
+      --text:#F5F7FA;        /* primary text */
+      --text-sec:#C9CED6;    /* secondary */
+      --text-muted:#9AA3AE;  /* captions */
+
+      --gold:#D4AF37;        /* primary gold */
+      --gold-deep:#B68A20;   /* shadow gold */
+      --gold-pale:#F3D98B;   /* highlight */
+      --gold-grad:linear-gradient(90deg,#B68A20 0%,#D4AF37 35%,#F3D98B 60%,#D4AF37 85%,#B68A20 100%);
+
+      --radius:16px;
+      --shadow-lg:0 24px 70px rgba(0,0,0,.55);
+      --shadow-md:0 14px 34px rgba(0,0,0,.42);
+      --maxw:1200px;
+    }
+    html,body{background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial,sans-serif;margin:0;-webkit-font-smoothing:antialiased}
+    a{color:inherit;text-decoration:none}
+    .container{max-width:var(--maxw);margin-inline:auto;padding:0 22px}
+    .section{padding:96px 0}
+    .h1{font-family:"Playfair Display",Georgia,serif;font-weight:700;font-size:clamp(2rem,5vw,3.4rem);line-height:1.1;margin:0}
+    .h2{font-family:"Playfair Display",Georgia,serif;font-weight:700;font-size:clamp(1.6rem,3.5vw,2.4rem);line-height:1.2;margin:0 0 10px}
+    .lead{color:var(--text-sec);font-size:1.12rem;line-height:1.65}
+    .muted{color:var(--text-muted)}
+
+    /* Header */
+    .header{position:sticky;top:0;z-index:50;background:rgba(13,13,16,.7);backdrop-filter:blur(10px);border-bottom:1px solid var(--hair)}
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:16px;height:72px}
+    .brand{display:flex;align-items:center;gap:12px;font-weight:800}
+    .brand .mark{width:32px;height:32px;display:grid;place-items:center;border-radius:10px;background:var(--gold);color:#0B0B0F;font-weight:900}
+    .navlinks{display:flex;gap:26px}
+    .navlinks a{color:var(--text-sec)}
+    .navlinks a:hover{color:var(--gold)}
+    .btn{display:inline-flex;align-items:center;gap:.6rem;padding:.9rem 1.2rem;border-radius:14px;border:1px solid transparent;background:var(--gold);color:#0B0B0F;font-weight:700;letter-spacing:.04em;box-shadow:0 10px 28px rgba(212,175,55,.3);transition:transform .18s ease,box-shadow .18s ease}
+    .btn:hover{transform:translateY(-1px);box-shadow:0 14px 36px rgba(212,175,55,.38)}
+    .btn.outline{background:transparent;color:var(--gold);border-color:rgba(212,175,55,.55)}
+    .btn.outline:hover{background:rgba(212,175,55,.1)}
+
+    /* Hero */
+    .hero{padding:110px 0 80px;position:relative}
+    .hero::before{content:"";position:absolute;inset:-30% -10% auto -10%;height:80%;background:radial-gradient(60% 50% at 20% 10%,rgba(243,217,139,.08),rgba(18,19,23,0) 70%)}
+    .hero-wrap{display:grid;gap:30px;grid-template-columns:1.1fr .9fr;align-items:center}
+    .pill{display:inline-flex;gap:10px;align-items:center;padding:.4rem .7rem;border-radius:999px;background:rgba(212,175,55,.12);border:1px solid rgba(212,175,55,.3);color:var(--gold);font-weight:600;font-size:.9rem}
+    .hero-img{border-radius:18px;border:1px solid var(--hair);overflow:hidden;box-shadow:var(--shadow-lg)}
+    .hero-img img{width:100%;display:block}
+    .hero-cta{display:flex;gap:14px;flex-wrap:wrap;margin-top:22px}
+    .hero-feats{display:flex;gap:18px;flex-wrap:wrap;margin-top:18px;color:var(--text-muted);font-size:.95rem}
+    .hero-col.text{display:flex;flex-direction:column}
+
+    /* Cards strip */
+    .strip{background:var(--mutebg);border-top:1px solid var(--hair);border-bottom:1px solid var(--hair)}
+    .cards{display:grid;gap:26px;grid-template-columns:repeat(4,minmax(0,1fr))}
+    .card{background:var(--panel);border:1px solid var(--hair);border-radius:16px;padding:22px;box-shadow:var(--shadow-md)}
+    .icon{width:28px;height:28px;color:var(--gold)}
+
+    /* Cars */
+    .cars{display:grid;gap:26px;grid-template-columns:repeat(4,minmax(0,1fr))}
+    .car{background:var(--panel);border:1px solid var(--hair);border-radius:18px;overflow:hidden;box-shadow:var(--shadow-md)}
+    .car img{width:100%;display:block;aspect-ratio:16/9;object-fit:cover}
+    .car .meta{padding:16px}
+
+    /* Testimonials */
+    .tgrid{display:grid;gap:24px;grid-template-columns:repeat(3,minmax(0,1fr))}
+    .t{background:var(--panel);border:1px solid var(--hair);border-radius:16px;padding:18px}
+    .t .row{display:flex;align-items:center;gap:10px;margin-bottom:6px}
+    .avatar{width:36px;height:36px;border-radius:999px;overflow:hidden;border:1px solid var(--hair)}
+
+    /* Availability form */
+    .avail{background:var(--panel);border:1px solid var(--hair);border-radius:18px;padding:22px;display:grid;gap:22px;grid-template-columns:1fr;align-items:start}
+    .form{display:grid;gap:14px;grid-template-columns:1fr 1fr}
+    .form input,.form select{background:var(--panel-2);border:1px solid var(--hair);border-radius:12px;padding:12px 12px;color:var(--text)}
+    .form small{grid-column:1/-1;color:var(--text-muted)}
+    .notice{margin-top:10px;color:var(--gold);font-weight:600}
+    .form .full{grid-column:1/-1}
+    .form .actions{grid-column:1/-1}
+
+    /* Modal */
+    .modal-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.6);display:none;align-items:center;justify-content:center;padding:20px;z-index:60}
+    .modal{
+      max-width:920px;width:100%;
+      max-height:90vh;
+      overflow:auto;
+      background:var(--panel);border:1px solid var(--hair);border-radius:18px;box-shadow:var(--shadow-lg);
+      display:grid;grid-template-columns:1fr;gap:18px;          /* ← single column */
+   }
+
+    .modal header{display:flex;justify-content:space-between;align-items:center;padding:16px 16px 0 16px}
+    .modal .close{background:transparent;border:0;color:var(--text-sec);font-size:1.4rem;cursor:pointer}
+    .modal .body{padding:6px 16px 16px 16px}
+    .modal img{height:100%;width:100%;object-fit:cover}
+
+    /* Sticky CTA in modal for mobile & small screens */
+    .form .actions{
+      position:sticky;bottom:0;
+      background:linear-gradient(180deg,rgba(0,0,0,0),var(--panel) 40%);
+      padding-top:12px;padding-bottom:12px;
+      border-top:1px solid var(--hair);
+      display:flex;gap:10px;align-items:center;justify-content:flex-start;
+    }
+
+    /* Footer */
+    .footer{padding:60px 0;border-top:1px solid var(--hair);color:var(--text-muted)}
+    .footgrid{display:grid;gap:22px;grid-template-columns:2fr 1fr 1fr 1fr}
+    .footgrid a{color:var(--text-muted)}
+    .footgrid a:hover{color:var(--gold)}
+
+    /* Responsive */
+    @media (max-width:1100px){
+      .hero-wrap{grid-template-columns:1fr}
+      .hero-col.text{order:1}
+      .hero-col.media{order:2}
+      .cards{grid-template-columns:repeat(2,1fr)}
+      .cars{grid-template-columns:repeat(2,1fr)}
+      .avail{grid-template-columns:1fr}
+      .modal{grid-template-columns:1fr;max-height:95vh}
+    }
+    @media (max-width:900px){
+      .tgrid{grid-template-columns:1fr}
+    }
+    @media (max-width:640px){
+      .cards{grid-template-columns:1fr}
+      .cars{grid-template-columns:1fr}
+      .navlinks{display:none}
+      .form{grid-template-columns:1fr}
+      .form .actions{padding-bottom:calc(12px + env(safe-area-inset-bottom, 0px))}
+    }
+    /* Terms modal */
+    .terms-backdrop{
+      position:fixed; inset:0; display:none;
+      align-items:center; justify-content:center;
+      background:rgba(0,0,0,.6); z-index:1000;
+   }
+    .terms-backdrop.open{ display:flex; }
+
+    .terms-panel{
+      width:min(900px,92vw);
+      max-height:90vh; overflow:auto;
+      background:var(--panel);
+      border:1px solid var(--hair);
+      border-radius:18px;
+      box-shadow:var(--shadow-lg);
+      padding:24px 20px;
+   }
+
+    .terms-header{
+      display:flex; align-items:center; justify-content:space-between;
+      position:sticky; top:0;
+      padding:8px 0 12px;
+      background:linear-gradient(180deg, var(--panel) 85%, rgba(0,0,0,0));
+      border-bottom:1px solid var(--hair);
+      margin-bottom:12px;
+  }
+
+    .terms-close{
+      background:transparent; border:0; cursor:pointer;
+      font-size:1.6rem; line-height:1; color:var(--text-sec);
+  }
+    .terms-content{ display:grid; gap:12px; line-height:1.6; }
+    .terms-content h3{ margin-top:12px; font-size:1.05rem; }
+
+  </style>
+</head>
+<body>
+  <a href="#main" class="pill" style="position:absolute;left:-9999px;top:auto">Skip to content</a>
+
+  <!-- Inline Icon Sprite (stroke icons) -->
+  <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+    <symbol id="i-crown" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7l4 4 5-6 5 6 4-4v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7z"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 5-3.5 8-7 9-3.5-1-7-4-7-9V6l7-3z"/><path d="M9.5 12.5l2 2 3.5-4"/></symbol>
+    <symbol id="i-car" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 13l2-5a3 3 0 0 1 3-2h8a3 3 0 0 1 3 2l2 5"/><rect x="3" y="13" width="18" height="6" rx="2"/><circle cx="7.5" cy="18" r="1.2"/><circle cx="16.5" cy="18" r="1.2"/></symbol>
+    <symbol id="i-users" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="3"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+    <symbol id="i-brief" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 1-2 2v2"/><path d="M3 12h18"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v6l4 2"/></symbol>
+    <symbol id="i-leaf" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21c8 0 14-6 14-14V3h-4C7 3 3 7 3 15v6h2z"/><path d="M9 17c0-3 2-5 5-5"/></symbol>
+  </svg>
+
+  <header class="header" role="banner">
+    <div class="container nav">
+      <a class="brand" href="#home"><span class="mark">C</span><span>Chauffeur Cabs</span></a>
+      <nav class="navlinks" aria-label="Primary">
+        <!-- Removed "How it works" -->
+        <a href="#cars">Cars</a>
+        <a href="#testimonials">Testimonials</a>
+      </nav>
+      <div style="display:flex;gap:10px;align-items:center">
+        <button class="btn" id="openModal" type="button">Chauff Now</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- HERO -->
+    <section id="home" class="hero section">
+      <div class="container hero-wrap">
+        <div class="hero-col text">
+          <span class="pill">Office-only routes • Gated communities • Hyderabad</span>
+          <h1 class="h1" style="margin:16px 0 14px">Chauffeur-Driven Rides from Your Gated Community to Your Office</h1>
+          <p class="lead">Your everyday commute, elevated — premium cars, professional drivers, and like-minded peers from your society. Fixed routes to major office hubs for a safe, predictable experience.</p>
+          <div class="hero-cta">
+            <button class="btn" id="openModal2" type="button">Chauff Now</button>
+          </div>
+          <div class="hero-feats">
+            <span style="display:inline-flex;gap:8px;align-items:center"><svg class="icon"><use href="#i-crown"/></svg>Premium cars</span>
+            <span style="display:inline-flex;gap:8px;align-items:center"><svg class="icon"><use href="#i-shield"/></svg>Professional drivers</span>
+            <span style="display:inline-flex;gap:8px;align-items:center"><svg class="icon"><use href="#i-users"/></svg>Peers from your society</span>
+          </div>
+        </div>
+        <div class="hero-col media">
+          <div class="hero-img" aria-hidden="true">
+            <img src="https://i.imghippo.com/files/aWV2562G.png" alt="Premium car interior"/>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RIDE NOW -->
+    <section id="availability" class="section" aria-labelledby="avail-title">
+      <div class="container">
+        <div class="avail">
+          <div>
+            <h2 id="avail-title" class="h2">Book Your Ride</h2>
+            <p class="muted" style="margin:0 0 10px">All fields are required.</p>
+            <form name="availability" method="POST" data-netlify="true" class="form">
+              <input type="hidden" name="form-name" value="availability" />
+
+              <input required name="full_name" placeholder="Full name" />
+              <input required name="phone" placeholder="Phone" pattern="[0-9]{10}" title="10-digit" />
+
+              <input required name="email" type="email" placeholder="Email" />
+              <input required name="society" placeholder="Gated community / Society" />
+
+              <select required name="office_hub" aria-label="Office hub">
+                <option value="">Office hub</option>
+                <option>Financial District</option>
+                <option>HITEC City</option>
+                <option>Gachibowli</option>
+                <option>Kokapet</option>
+              </select>
+              <input required name="company" placeholder="Company" />
+
+              <select required name="designation" aria-label="Designation band">
+                <option value="">Designation band</option>
+                <option>Associate–Senior</option>
+                <option>Lead–Manager</option>
+                <option>Director+</option>
+                <option>CEO</option>
+                <option>Engineer</option>
+                <option>Other</option>
+              </select>
+              <select required name="pickup_time" aria-label="Preferred time (pickup)">
+                <option value="">Preferred time (pickup)</option>
+                <option>07:30</option><option>08:00</option><option>08:30</option><option>09:00</option><option>09:30</option>
+              </select>
+
+              <select required name="return_time" aria-label="Preferred time (return)">
+                <option value="">Preferred time (return)</option>
+                <option>17:30</option><option>18:00</option><option>18:30</option><option>19:00</option><option>19:30</option>
+              </select>
+              <label class="muted" style="display:flex;align-items:center;gap:10px"><input type="checkbox" name="women_pair"/> Prefer pairing with women</label>
+
+              <label class="muted full" style="display:flex;align-items:flex-start;gap:10px"><input type="checkbox" required/> <span>I agree to the Privacy Policy & Terms and consent to be contacted about Chauffeur services.</span></label>
+
+              <div class="actions"><button class="btn" type="submit">Submit</button><div class="notice" aria-live="polite" hidden>No rides available on this route.</div></div>
+              <small>We’ll verify your community before onboarding.</small>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOUR CARDS STRIP -->
+    <section class="strip section" aria-labelledby="features-title">
+      <div class="container">
+        <h2 id="features-title" class="h2" style="text-align:center;margin-bottom:18px">What Makes Us Special</h2>
+        <div class="cards" role="list">
+          <article class="card" role="listitem">
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px"><svg class="icon"><use href="#i-brief"/></svg><strong>Chauffeur-Driven</strong></div>
+            <p class="muted" style="margin:.4rem 0 0">Polite, professional drivers. Every ride feels like your own chauffeur.</p>
+          </article>
+          <article class="card" role="listitem">
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px"><svg class="icon"><use href="#i-car"/></svg><strong>Premium Vehicles</strong></div>
+            <p class="muted" style="margin:.4rem 0 0">Innova Crysta, Kia Carnival, MG Hector, Hyundai Alcazar — quiet, spacious cabins.</p>
+          </article>
+          <article class="card" role="listitem">
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px"><svg class="icon"><use href="#i-crown"/></svg><strong>Exclusive Access</strong></div>
+            <p class="muted" style="margin:.4rem 0 0">Verified residents of gated communities only. Commute with peers at your level.</p>
+          </article>
+          <article class="card" role="listitem">
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px"><svg class="icon"><use href="#i-clock"/></svg><strong>Fixed Office Routes</strong></div>
+            <p class="muted" style="margin:.4rem 0 0">Structured, predictable routes to Hyderabad’s top corporate hubs.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section id="testimonials" class="section" aria-labelledby="t-title">
+      <div class="container">
+        <h2 id="t-title" class="h2">What Professionals Say</h2>
+        <div class="tgrid">
+          <article class="t"><div class="row"><img class="avatar" src="https://i.imghippo.com/files/XvS5038zk.jpeg" alt="Ananya"/><strong>Ananya S.</strong></div><p class="muted">“This makes my office commute feel calm and premium. Love the quiet cabins and the drivers are great.”</p></article>
+          <article class="t"><div class="row"><img class="avatar" src="https://i.imghippo.com/files/s8170uE.jpeg" alt="Rahul"/><strong>Rahul M.</strong></div><p class="muted">“Not like random pooling, I ride with peers from my society. It’s safe, predictable and classy.”</p></article>
+          <article class="t"><div class="row"><img class="avatar" src="https://i.imghippo.com/files/nT7277A.jpeg" alt="Meera"/><strong>Meera K.</strong></div><p class="muted">“Exactly what Hyderabad needed, a chauffeur comfort and sensible office routes.”</p></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CARS GRID -->
+    <section id="cars" class="section" aria-labelledby="cars-title">
+      <div class="container">
+        <h2 id="cars-title" class="h2">Our Cars</h2>
+        <p class="muted" style="margin:0 0 18px">Indicative models, fleet may vary by route.</p>
+        <div class="cars" role="list">
+          <article class="car" role="listitem">
+            <img src="https://i.imghippo.com/files/CPTM5767uaI.png" alt="Toyota Innova Crysta"/>
+            <div class="meta"><strong>Toyota Innova Crysta</strong><p class="muted" style="margin:.35rem 0 0">Spacious 7-seater comfort.</p></div>
+          </article>
+          <article class="car" role="listitem">
+            <img src="https://i.imghippo.com/files/vxed1889HF.png" alt="Kia Carnival"/>
+            <div class="meta"><strong>Kia Carnival</strong><p class="muted" style="margin:.35rem 0 0">Business-class interiors.</p></div>
+          </article>
+          <article class="car" role="listitem">
+            <img src="https://i.imghippo.com/files/pwI8843WJA.png" alt="MG Hector"/>
+            <div class="meta"><strong>MG Hector</strong><p class="muted" style="margin:.35rem 0 0">Executive SUV comfort.</p></div>
+          </article>
+          <article class="car" role="listitem">
+            <img src="https://i.imghippo.com/files/OU3339nw.png" alt="Hyundai Alcazar"/>
+            <div class="meta"><strong>Hyundai Alcazar</strong><p class="muted" style="margin:.35rem 0 0">Stylish, feature-rich.</p></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- AVAILABILITY MODAL (opens on every load) -->
+  <div class="modal-backdrop" id="modalBackdrop" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div>
+        <header>
+          <h2 id="modalTitle" class="h2">Book Your Ride</h2>
+          <button class="close" id="closeModal" aria-label="Close">×</button>
+        </header>
+        <div class="body">
+          <form name="availability-modal" method="POST" data-netlify="true" class="form">
+            <input type="hidden" name="form-name" value="availability-modal" />
+
+            <input required name="full_name" placeholder="Full name" />
+            <input required name="phone" placeholder="Phone" pattern="[0-9]{10}" title="10-digit" />
+
+            <input required name="email" type="email" placeholder="Email" />
+            <input required name="society" placeholder="Gated community / Society" />
+
+            <select required name="office_hub" aria-label="Office hub">
+              <option value="">Office hub</option>
+              <option>Financial District</option>
+              <option>HITEC City</option>
+              <option>Gachibowli</option>
+              <option>Kokapet</option>
+            </select>
+            <input required name="company" placeholder="Company" />
+
+            <select required name="designation" aria-label="Designation band">
+              <option value="">Designation band</option>
+              <option>Associate–Senior</option>
+              <option>Lead–Manager</option>
+              <option>Director+</option>
+              <option>CEO</option>
+              <option>Engineer</option>
+              <option>Other</option>
+            </select>
+            <select required name="pickup_time" aria-label="Preferred time (pickup)">
+              <option value="">Preferred time (pickup)</option>
+              <option>07:30</option><option>08:00</option><option>08:30</option><option>09:00</option><option>09:30</option>
+            </select>
+            <select required name="return_time" aria-label="Preferred time (return)">
+              <option value="">Preferred time (return)</option>
+              <option>17:30</option><option>18:00</option><option>18:30</option><option>19:00</option><option>19:30</option>
+            </select>
+            <label class="muted" style="display:flex;align-items:center;gap:10px"><input type="checkbox" name="women_pair"/> Prefer pairing with women</label>
+
+            <label class="muted full" style="display:flex;align-items:flex-start;gap:10px"><input type="checkbox" required/> <span>I agree to the Privacy Policy & Terms and consent to be contacted about Chauffeur services.</span></label>
+
+            <div class="actions"><button class="btn" type="submit">Submit</button><div class="notice" aria-live="polite" hidden>No rides available on this route.</div></div>
+            <small>We’ll verify your community before onboarding.</small>
+          </form>
+        </div>
+      </div>
+      <div aria-hidden="true" class="hide-on-mobile">
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer" role="contentinfo">
+    <div class="container footgrid">
+      <div>
+        <div class="brand" style="margin-bottom:10px"><span class="mark">C</span><strong>Chauffeur Cabs</strong></div>
+        <p>Members-only, chauffeur-driven office routes from your community.</p>
+      </div>
+      <nav aria-label="Footer">
+        <strong class="muted">Company</strong><br>
+        <a href="#home">Home</a><br>
+        <!-- Removed "How it works" -->
+      </nav>
+      <nav>
+        <strong class="muted">Product</strong><br>
+        <a href="#cars">Cars</a><br>
+        <a href="#testimonials">Testimonials</a>
+      </nav>
+      <nav>
+        <strong class="muted">Legal</strong><br>
+        <a href="#" data-open="terms">Terms and Conditions</a>
+      </nav>
+    </div>
+    <div class="container" style="margin-top:24px;color:var(--text-muted);font-size:.9rem">© <span id="y"></span> Chauffeur Cabs. All rights reserved.</div>
+  </footer>
+  <!-- Terms & Conditions Modal -->
+<div id="termsModal" class="terms-backdrop" aria-hidden="true">
+  <div class="terms-panel" role="dialog" aria-modal="true" aria-labelledby="termsTitle">
+    <header class="terms-header">
+      <h2 id="termsTitle">Terms &amp; Conditions</h2>
+      <button class="terms-close" id="closeTerms" aria-label="Close">&times;</button>
+    </header>
+
+    <div class="terms-content">
+      <p>
+        Welcome to Chauffeur Cabs. By booking or using our services, whether via web, app, or phone, you agree to these Terms &amp; Conditions. Please read them carefully.
+      </p>
+
+      <h3>Service Description</h3>
+      <p>
+        Chauffeur Cabs offers premium booking for on-demand and scheduled transportation within specified city zones and gated communities. Our fleet includes professionally driven, well-maintained sedans, SUVs, and executive cars.
+      </p>
+
+      <h3>Eligibility &amp; Verification</h3>
+      <p>
+        To use our service, you must be of legal age and a verified resident or employee of an approved gated community or society. During onboarding, we verify your credentials and community affiliation.
+      </p>
+
+      <h3>Bookings &amp; Pricing</h3>
+      <ul>
+        <li><strong>Fixed Pricing:</strong> Ride fares are calculated upfront and include taxes-no surge pricing or hidden fees.</li>
+        <li><strong>Booking Confirmation:</strong> Rides are only confirmed once you receive a booking reference and vehicle details.</li>
+      </ul>
+
+      <h3>Payments</h3>
+      <p>
+        Payment methods may include credit/debit cards, net banking, UPI, or other enabled digital wallets. Payment is processed securely at booking completion.
+      </p>
+
+      <h3>Cancellations &amp; No-Shows</h3>
+      <ul>
+        <li><strong>User Cancellations:</strong> You may cancel up to <em> 60 minutes</em> before the scheduled pickup without penalty.</li>
+        <li><strong>Late Cancellations / No-Shows:</strong> Cancellations made past the free window or failure to board the vehicle may incur partial or full charges equivalent to the booking fare.</li>
+      </ul>
+
+      <h3>Driver Conduct &amp; Safety</h3>
+      <p>
+        Our drivers are trained professionals who prioritize customer safety, obey all traffic laws, and maintain high standards of hygiene and courtesy. If you have concerns about driver behavior or vehicle condition, please report immediately via support.
+      </p>
+
+      <h3>Liability &amp; Limitations</h3>
+      <p>
+        Chauffeur Cabs is not liable for:
+      </p>
+      <ul>
+        <li>Indirect, special, or consequential losses.</li>
+        <li>Delays due to traffic, weather, or unforeseen events.</li>
+        <li>Personal items lost or forgotten in the vehicle—please check before exiting.</li>
+      </ul>
+
+      <h3>Modifications to Service or Terms</h3>
+      <p>
+        Chauffeur Cabs may modify these Terms &amp; Conditions or adjust fare structures, vehicle availability, and service zones at its discretion. We will notify you of any material changes via email or in-app alert.
+      </p>
+
+      <h3>Privacy &amp; Data</h3>
+      <p>
+        Use of personal data is governed by our Privacy Policy, which explains how we collect, use, and protect your information.
+      </p>
+
+      <h3>Dispute Resolution</h3>
+      <p>
+        Any disputes arising from these terms or the provision of services shall be governed by the laws of the applicable jurisdiction. Parties will attempt amicable resolution before seeking judicial remedy.
+      </p>
+    </div>
+  </div>
+</div>
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+    // smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', e=>{ const id=a.getAttribute('href'); if(id.length>1){ e.preventDefault(); document.querySelector(id).scrollIntoView({behavior:'smooth'});} });
+    });
+
+    // Modal helpers
+    const backdrop = document.getElementById('modalBackdrop');
+    const open1 = document.getElementById('openModal');
+    const open2 = document.getElementById('openModal2');
+    const closeBtn = document.getElementById('closeModal');
+
+    function openModal(){
+      backdrop.style.display='flex';
+      backdrop.setAttribute('aria-hidden','false');
+      document.body.style.overflow='hidden';
+    }
+    function closeModal(){
+      backdrop.style.display='none';
+      backdrop.setAttribute('aria-hidden','true');
+      document.body.style.overflow='';
+    }
+
+    if(open1) open1.addEventListener('click', openModal);
+    if(open2) open2.addEventListener('click', openModal);
+    if(closeBtn) closeBtn.addEventListener('click', closeModal);
+    backdrop.addEventListener('click', (e)=>{ if(e.target===backdrop){ closeModal(); } });
+    document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeModal(); });
+
+    // Open the availability modal on every page load
+    window.addEventListener('load', openModal);
+
+    // Intercept form submissions to show availability note (both forms)
+    function hookForm(formName){
+      const f = document.forms[formName];
+      if(!f) return;
+      f.addEventListener('submit', function(e){
+        e.preventDefault();
+        const note = f.querySelector('.notice');
+        if(note){ note.hidden = false; }
+      });
+    }
+    hookForm('availability');
+    hookForm('availability-modal');
+    // ===== Terms & Conditions Modal =====
+const termsModal = document.getElementById('termsModal');
+const closeTermsBtn = document.getElementById('closeTerms');
+
+// Open modal only when footer Terms link is clicked
+document.querySelectorAll('footer a[data-open="terms"]').forEach(link => {
+  link.addEventListener('click', function(e){
+    e.preventDefault();
+    termsModal.classList.add('open');
+    document.body.style.overflow = 'hidden'; // lock scrolling
+  });
+});
+
+// Close modal on button click
+closeTermsBtn.addEventListener('click', () => {
+  termsModal.classList.remove('open');
+  document.body.style.overflow = '';
+});
+
+// Close modal when clicking outside the panel
+termsModal.addEventListener('click', (e) => {
+  if (e.target === termsModal) {
+    termsModal.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+});
+
+// Close modal on ESC key
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && termsModal.classList.contains('open')) {
+    termsModal.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+});
+// === Send BOTH booking forms to Google Sheets via Apps Script ===
+// Sheet columns (order): timestamp, full_name, phone, email, society, office_hub,
+// company, designation_band, pickup_time, return_time, women_preference
+(function () {
+  const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbzthNZkfZjmbOuP7VnReSrKrKIal_LDoNg_N8q-Vp4fIAIDhhok1rEu_DnyHRGTRIGeLQ/exec'; // <-- replace with your Apps Script Web App URL
+
+  // Only attach if the form actually exists
+  function getFormByName(name) {
+    try { return document.forms[name] || null; } catch { return null; }
+  }
+
+  // Build payload from the actual field names used in your file
+  function buildPayload(form) {
+    const v = n => (form.elements[n]?.value || '').toString().trim();
+    const isChecked = n => !!form.elements[n]?.checked;
+
+    return {
+      full_name: v('full_name'),
+      phone: v('phone'),
+      email: v('email'),
+      society: v('society'),
+      office_hub: v('office_hub'),
+      company: v('company'),
+      // map "designation" -> "designation_band" for the sheet
+      designation_band: v('designation'),
+      pickup_time: v('pickup_time'),
+      return_time: v('return_time'),
+      // map "women_pair" -> "women_preference" (boolean)
+      women_preference: isChecked('women_pair')
+    };
+  }
+
+  async function submitToSheet(data) {
+    // 'no-cors' avoids CORS errors on static hosting; Apps Script still receives the payload
+    await fetch(WEB_APP_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    });
+    return true;
+  }
+
+  function wire(form) {
+    if (!form) return;
+    form.addEventListener('submit', async (e) => {
+      // Another handler (hookForm) already calls preventDefault to show the note; we do it too for safety.
+      e.preventDefault();
+
+      const payload = buildPayload(form);
+
+      // Minimal validation only if those fields exist in the current form
+      if (form.elements['full_name'] && !payload.full_name) { alert('Please enter your name.'); return; }
+      if (form.elements['phone'] && !payload.phone) { alert('Please enter your phone.'); return; }
+      if (form.elements['email'] && !payload.email) { alert('Please enter your email.'); return; }
+
+      const btn = form.querySelector('button[type="submit"], .actions button');
+      const original = btn?.textContent;
+      if (btn) { btn.disabled = true; btn.textContent = 'Submitting…'; }
+
+      try {
+        await submitToSheet(payload);
+        // Keep your existing availability note UX; just reset after logging
+        form.reset();
+      } catch (err) {
+        console.error('Sheet submit failed:', err);
+        alert('Could not submit. Please try again.');
+      } finally {
+        if (btn) { btn.disabled = false; btn.textContent = original || 'Submit'; }
+      }
+    });
+  }
+
+  // Wire both forms present in your file
+  wire(getFormByName('availability'));        // section form
+  wire(getFormByName('availability-modal'));  // popup form
+})();
+
+
+  </script>
+</body>
+</html>
