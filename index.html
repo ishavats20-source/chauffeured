@@ -9,18 +9,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
   <style>
-    /* Reduce horizontal padding on mobile to prevent jiggle */
-@media (max-width: 560px) {
-  .section {
-    padding-left: 9px !important;
-    padding-right: 9px !important;
-  }
-  .container {
-    padding-left: 0 !important;
-    padding-right: 0 !important;
-  }
-}
-
     .logo {
   height: 32px;     /* adjust size as needed */
   width: auto;      /* keeps proportions */
@@ -205,6 +193,34 @@
     .terms-content h3{ margin-top:12px; font-size:1.05rem; }
     section#how {
   padding-top: 10px !important;  /* reduce space above heading */
+}
+    /* === FIXES FOR LAYOUT STABILITY === */
+
+/* 1. Keep consistent horizontal padding in all sections */
+.section {
+  padding-left: 16px;
+  padding-right: 16px;
+  box-sizing: border-box;
+}
+
+.container {
+  max-width: 1200px;  /* you can adjust if needed */
+  margin: 0 auto;
+  padding-left: 16px;
+  padding-right: 16px;
+  box-sizing: border-box;
+}
+
+/* 2. Prevent horizontal jiggle/scroll */
+html, body {
+  overflow-x: hidden;
+}
+
+/* 3. Ensure How it Works grid collapses neatly on mobile */
+@media (max-width: 560px) {
+  .how-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
   </style>
