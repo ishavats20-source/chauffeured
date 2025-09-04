@@ -260,6 +260,14 @@ html, body {
   /* keep icon compact so it doesn't push text */
   .how-card .icon { width: 24px; height: 24px; margin-bottom: 6px; }
 }
+    .small-label {
+  font-size: 0.8rem;   /* makes the text smaller */
+  line-height: 1.3;    /* tighter spacing */
+}
+.small-label span {
+  font-size: 0.8rem;   /* also shrink the span text */
+}
+
 
 
   </style>
@@ -404,9 +412,15 @@ html, body {
                 <option value="">Preferred time (return)</option>
                 <option>17:30</option><option>18:00</option><option>18:30</option><option>19:00</option><option>19:30</option><option>20:00</option><option>20:30</option><option>21:00</option><option>21:30</option><option>22:00</option>
               </select>
-              <label class="muted" style="display:flex;align-items:center;gap:10px"><input type="checkbox" name="women_pair"/> Prefer pairing with women</label>
+              <label class="muted small-label" style="display:flex;align-items:center;gap:10px">
+  <input type="checkbox" name="women_pair"/>
+  Prefer pairing with women
+</label>
 
-              <label class="muted full" style="display:flex;align-items:flex-start;gap:10px"><input type="checkbox" required/> <span>I agree to the Privacy Policy & Terms and consent to be contacted about Chauffeur services.</span></label>
+<label class="muted full small-label" style="display:flex;align-items:flex-start;gap:10px">
+  <input type="checkbox" required/>
+  <span>I agree to the Privacy Policy & Terms and consent to be contacted about Chauffeur services.</span>
+</label>
 
               <div class="actions"><button class="btn" type="submit">Submit</button><div class="notice" aria-live="polite" hidden>Your route request is in. Stay tuned for updates.</div></div>
               <small>We’ll verify your community before onboarding.</small>
@@ -527,10 +541,15 @@ html, body {
               <option value="">Preferred time (return)</option>
               <option>17:30</option><option>18:00</option><option>18:30</option><option>19:00</option><option>19:30</option><option>20:00</option><option>20:30</option><option>21:00</option><option>21:30</option><option>22:00</option>
             </select>
-            <label class="muted" style="display:flex;align-items:center;gap:10px"><input type="checkbox" name="women_pair"/> Prefer pairing with women</label>
+            <label class="muted small-label" style="display:flex;align-items:center;gap:10px">
+  <input type="checkbox" name="women_pair"/>
+  Prefer pairing with women
+</label>
 
-            <label class="muted full" style="display:flex;align-items:flex-start;gap:10px"><input type="checkbox" required/> <span>I agree to the Privacy Policy & Terms and consent to be contacted about Chauffeur services.</span></label>
-
+<label class="muted full small-label" style="display:flex;align-items:flex-start;gap:10px">
+  <input type="checkbox" required/>
+  <span>I agree to the Privacy Policy & Terms and consent to be contacted about Chauffeur services.</span>
+</label>
             <div class="actions"><button class="btn" type="submit">Submit</button><div class="notice" aria-live="polite" hidden>Your route request is in. Stay tuned for updates.</div></div>
             <small>We’ll verify your community before onboarding.</small>
           </form>
