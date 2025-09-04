@@ -216,28 +216,25 @@ html, body {
   overflow-x: hidden;
 }
 
-/* Mobile: tighten ALL gaps between footer columns */
+/* Mobile: uniform horizontal scroller for ALL footer columns */
 @media (max-width: 560px){
   .footer .footgrid{
-    display: flex;
-    gap: 8px;                 /* the true space between columns */
+    display: grid !important;
+    grid-auto-flow: column;                 /* lay columns left→right */
+    grid-auto-columns: minmax(160px, 58%);  /* each column width (tweak) */
+    gap: 8px !important;                    /* <- the ONLY space between columns */
     overflow-x: auto;
+    overflow-y: hidden;
     -webkit-overflow-scrolling: touch;
+    padding-bottom: 8px;
   }
 
-  /* Make each column narrower so more fit in view */
+  /* remove any margins/padding that could add extra space */
   .footer .footgrid > *{
-    flex: 0 0 58%;
-    min-width: 180px;
-    padding: 0;               /* remove inner padding if any */
-    margin: 0 !important;     /* kill per-column margins */
+    margin: 0 !important;
+    padding: 0 !important;
   }
-
-  /* Kill any leftover left-margins between nav columns */
   .footer .footgrid nav{ margin: 0 !important; }
-  .footer .footgrid nav + nav{ margin-left: 0 !important; }
-
-  /* (Optional) Make the brand block not “push” others */
   .footer .footgrid .brand{ margin: 0 !important; }
 }
 
