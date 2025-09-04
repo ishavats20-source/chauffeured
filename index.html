@@ -222,6 +222,23 @@ html, body {
     grid-template-columns: 1fr;
   }
 }
+    /* Mobile-only: make footer columns scroll horizontally */
+@media (max-width: 560px){
+  .footgrid{
+    display: flex;                /* override grid -> row */
+    gap: 16px;
+    overflow-x: auto;             /* enable horizontal scroll */
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x proximity;/* smooth snap while swiping */
+    padding-bottom: 8px;          /* room for scrollbar */
+  }
+  .footgrid > *{
+    flex: 0 0 72%;                /* each column width (tweak as needed) */
+    min-width: 240px;             /* ensures readability */
+    scroll-snap-align: start;
+  }
+}
 
   </style>
   <!-- Google tag (gtag.js) -->
@@ -278,7 +295,7 @@ html, body {
           <div class="hero-feats">
             <span style="display:inline-flex;gap:8px;align-items:center"><svg class="icon"><use href="#i-crown"/></svg>Premium cars</span>
             <span style="display:inline-flex;gap:8px;align-items:center"><svg class="icon"><use href="#i-shield"/></svg>Professional drivers</span>
-            <span style="display:inline-flex;gap:8px;align-items:center"><svg class="icon"><use href="#i-users"/></svg>Peers from your society</span>
+            <span style="display:inline-flex;gap:8px;align-items:center"><svg class="icon"><use href="#i-users"/></svg>Like-Minded Peers</span>
           </div>
         </div>
         <div class="hero-col media">
