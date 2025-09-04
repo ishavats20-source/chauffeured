@@ -225,7 +225,7 @@ html, body {
    @media (max-width: 560px){
   .footgrid{
     display: flex;
-    gap: 4px !important;              /* tighter space between columns */
+    gap: 0px !important;              /* tighter space between columns */
     overflow-x: auto;
     overflow-y: hidden;
     -webkit-overflow-scrolling: touch;
@@ -235,7 +235,7 @@ html, body {
   .footgrid > *{
     /* make each column narrower so more fits in view */
     flex: 0 0 50%;
-    min-width: 20px;
+    min-width: 160px;
     scroll-snap-align: start;
     padding-right: 8px;               /* reduce any internal padding if present */
   }
