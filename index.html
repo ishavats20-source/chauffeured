@@ -267,8 +267,21 @@ html, body {
 .small-label span {
   font-size: 0.8rem;   /* also shrink the span text */
 }
+    /* Make header always visible */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: var(--panel); /* solid background so text doesn't overlap content */
+  border-bottom: 1px solid var(--hair); /* optional line */
+}
 
-
+/* Push content down so it doesn't hide under header */
+body {
+  padding-top: 70px; /* adjust this number if your header is taller/shorter */
+}
 
   </style>
   <!-- Google tag (gtag.js) -->
