@@ -216,30 +216,31 @@ html, body {
   overflow-x: hidden;
 }
 
-/* 3. Ensure How it Works grid collapses neatly on mobile */
-@media (max-width: 560px) {
-  .how-grid {
-    grid-template-columns: 1fr;
-  }
-}
-   @media (max-width: 560px){
-  .footgrid{
+/* Mobile: tighten ALL gaps between footer columns */
+@media (max-width: 560px){
+  .footer .footgrid{
     display: flex;
-    gap: 90px !important;              /* tighter space between columns */
+    gap: 8px;                 /* the true space between columns */
     overflow-x: auto;
-    overflow-y: hidden;
     -webkit-overflow-scrolling: touch;
-    scroll-snap-type: x proximity;
-    padding-bottom: 8px;
   }
-  .footgrid > *{
-    /* make each column narrower so more fits in view */
-    flex: 0 0 20%;
-    min-width: 160px;
-    scroll-snap-align: start;
-    padding-right: 8px;               /* reduce any internal padding if present */
+
+  /* Make each column narrower so more fit in view */
+  .footer .footgrid > *{
+    flex: 0 0 58%;
+    min-width: 180px;
+    padding: 0;               /* remove inner padding if any */
+    margin: 0 !important;     /* kill per-column margins */
   }
+
+  /* Kill any leftover left-margins between nav columns */
+  .footer .footgrid nav{ margin: 0 !important; }
+  .footer .footgrid nav + nav{ margin-left: 0 !important; }
+
+  /* (Optional) Make the brand block not “push” others */
+  .footer .footgrid .brand{ margin: 0 !important; }
 }
+
   </style>
   <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-XKBPBX3VYH"></script>
