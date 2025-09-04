@@ -222,24 +222,24 @@ html, body {
     grid-template-columns: 1fr;
   }
 }
-    /* Mobile-only: make footer columns scroll horizontally */
-@media (max-width: 560px){
+   @media (max-width: 560px){
   .footgrid{
-    display: flex;                /* override grid -> row */
-    gap: 8px;
-    overflow-x: auto;             /* enable horizontal scroll */
+    display: flex;
+    gap: 8px !important;              /* tighter space between columns */
+    overflow-x: auto;
     overflow-y: hidden;
     -webkit-overflow-scrolling: touch;
-    scroll-snap-type: x proximity;/* smooth snap while swiping */
-    padding-bottom: 8px;          /* room for scrollbar */
+    scroll-snap-type: x proximity;
+    padding-bottom: 8px;
   }
   .footgrid > *{
-    flex: 0 0 72%;                /* each column width (tweak as needed) */
-    min-width: 100px;             /* ensures readability */
+    /* make each column narrower so more fits in view */
+    flex: 0 0 58%;
+    min-width: 180px;
     scroll-snap-align: start;
+    padding-right: 8px;               /* reduce any internal padding if present */
   }
 }
-
   </style>
   <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-XKBPBX3VYH"></script>
