@@ -237,6 +237,30 @@ html, body {
   .footer .footgrid nav{ margin: 0 !important; }
   .footer .footgrid .brand{ margin: 0 !important; }
 }
+    /* Mobile fixes: keep How-it-Works cards aligned and prevent text overflow */
+@media (max-width: 560px){
+  /* ensure single column on small screens */
+  .how-grid { grid-template-columns: 1fr; }
+
+  /* allow grid children to shrink properly */
+  .how-card { min-width: 0; align-items: start; }
+
+  /* prevent long headings/words from pushing layout */
+  .how-card h3,
+  .how-card p {
+    overflow-wrap: anywhere;   /* best at handling long words/URLs */
+    word-break: break-word;    /* fallback */
+    hyphens: auto;             /* nicer breaks if language allows */
+    line-height: 1.35;
+  }
+
+  /* optional: slightly smaller heading on mobile for tighter fit */
+  .how-card h3 { font-size: 1rem; }
+
+  /* keep icon compact so it doesn't push text */
+  .how-card .icon { width: 24px; height: 24px; margin-bottom: 6px; }
+}
+
 
   </style>
   <!-- Google tag (gtag.js) -->
