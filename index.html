@@ -698,9 +698,6 @@ body {
     backdrop.addEventListener('click', (e)=>{ if(e.target===backdrop){ closeModal(); } });
     document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeModal(); });
 
-    // Open the availability modal on every page load
-    window.addEventListener('load', openModal);
-
     // Intercept form submissions to show availability note (both forms)
     function hookForm(formName){
       const f = document.forms[formName];
