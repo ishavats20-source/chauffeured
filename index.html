@@ -282,14 +282,14 @@ html, body {
 body {
   padding-top: 70px; /* adjust this number if your header is taller/shorter */
 }
-/* Promo text just below header */
-.promo-text {
+    .promo-text {
   text-align: center;
-  color: var(--gold);    /* yellow from your theme */
+  color: var(--gold);
   font-size: 1rem;
   font-weight: 600;
-  margin: 6px 0;         /* small space above/below */
+  margin: 6px 0;
 }
+
 
   </style>
   <!-- Google tag (gtag.js) -->
@@ -319,6 +319,9 @@ body {
   </svg>
 
   <header class="header" role="banner">
+    <div class="promo-text">
+  🎁 Early registrations get free rides!
+</div>
     <div class="container nav">
       <a class="brand" href="#home"><img src="logo.png" alt="Chauffeur Cabs Logo" class="logo"><span>Chauffeur Cabs</span></a>
       <nav class="navlinks" aria-label="Primary">
@@ -526,9 +529,6 @@ body {
           <h2 id="modalTitle" class="h2">Book Your Ride</h2>
           <button class="close" id="closeModal" aria-label="Close">×</button>
         </header>
-        <div class="promo-text">
-  🎁 Early registrations get free rides!
-</div>
 
         <div class="body">
           <form name="availability-modal" method="POST" data-netlify="true" class="form">
