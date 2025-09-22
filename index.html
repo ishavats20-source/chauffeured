@@ -282,19 +282,14 @@ html, body {
 body {
   padding-top: 70px; /* adjust this number if your header is taller/shorter */
 }
-    /* Promo ribbon above hero */
-.promo-ribbon {
-  display: inline-block;
-  background: var(--gold);
-  color: #000; /* black text for contrast */
-  font-size: 0.9rem;
+/* Promo text just below header */
+.promo-text {
+  text-align: center;
+  color: var(--gold);    /* yellow from your theme */
+  font-size: 1rem;
   font-weight: 600;
-  padding: 6px 14px;
-  border-radius: 20px;
-  margin-bottom: 16px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  margin: 6px 0;         /* small space above/below */
 }
-
 
   </style>
   <!-- Google tag (gtag.js) -->
@@ -342,9 +337,6 @@ body {
     <section id="home" class="hero section">
       <div class="container hero-wrap">
         <div class="hero-col text">
-          <div class="promo-ribbon">
-    Early registrations get free rides!
-  </div>
           <span class="pill">Office-only routes • Gated communities • Hyderabad</span>
           <h1 class="h1" style="margin:16px 0 14px">Chauffeur-Driven Rides from Your Gated Community to Office in Hyderabad</h1>
           <p class="lead">Your everyday commute - elevated. <br> Ride in comfort with premium cars, trusted chauffeurs, and peers from your community along safe and fixed routes to major office hubs.</br> </p>
@@ -534,6 +526,10 @@ body {
           <h2 id="modalTitle" class="h2">Book Your Ride</h2>
           <button class="close" id="closeModal" aria-label="Close">×</button>
         </header>
+        <div class="promo-text">
+  🎁 Early registrations get free rides!
+</div>
+
         <div class="body">
           <form name="availability-modal" method="POST" data-netlify="true" class="form">
             <input type="hidden" name="form-name" value="availability-modal" />
